@@ -9,7 +9,7 @@ import os
 app=Flask(__name__)
 CORS(app)
 heroku = Heroku(app)
-DATABASE_URL = os.eviron.get("DATABASE_URL")
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 #this lets python know exactly where this file lives.
 basedir = os.path.abspath(os.path.dirname(__file__))
