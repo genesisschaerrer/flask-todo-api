@@ -37,6 +37,9 @@ class TodoSchema(ma.Schema):
 todo_schema = TodoSchema()
 todos_schema = TodoSchema(many=True)
 
+@app.route("/", methods=["GET"])
+det home():
+    return "<h1>Todos Flask API</h1>"
 #Get 
 @app.route("/todos", methods=["GET"])
 def get_todo():
