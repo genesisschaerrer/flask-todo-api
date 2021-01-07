@@ -3,13 +3,18 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS 
 from flask_heroku import Heroku
+from environs import Env
 import os
 
 
 app=Flask(__name__)
 CORS(app)
 heroku = Heroku(app)
-DATABASE_URL = os.environ.get("DATABASE_URL")
+
+env = Env()
+env.read_env()
+DATABASE_URL = env("DATABASE_URL")
+
 
 #this lets python know exactly where this file lives.
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -38,7 +43,7 @@ todo_schema = TodoSchema()
 todos_schema = TodoSchema(many=True)
 
 @app.route("/", methods=["GET"])
-det home():
+def home():
     return "<h1>Todos Flask API</h1>"
 #Get 
 @app.route("/todos", methods=["GET"])
